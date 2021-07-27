@@ -37,8 +37,7 @@ public class PrimeiroTeste {
 			System.out.println("Recebimentos: " + salarioTotal);
 			System.out.println("Devjava: " + java);
 			System.out.println("Situacao: " + situacao);
-			System.out.println("Status: " + status);
-			
+			System.out.println("Status: " + status);			
 		} else {
 			System.out.println("Deu ruim");
 		}
