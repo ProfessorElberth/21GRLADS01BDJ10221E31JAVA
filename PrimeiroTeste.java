@@ -1,33 +1,53 @@
 public class PrimeiroTeste {
+
+	private static String nome;
+	private static String sobrenome;
+	private static int idade;
+	private static float salario;
+	private static boolean java;
+	private static int qtdeMes;
 	
 	private static boolean validar(int qtde){
 		return qtde == 6;
+	}
+	
+	private static int calcularAnoNascimento(int idade){
+		return 2021 - idade;
+	}	
+	
+	private static float calcularSalarioTotal(float salario, int qtdeMes){
+		return salario * qtdeMes;
+	}
+	
+	private static String definirSituacao(int idade){		
+		return idade < 50 ? "Iniciante" : "Veterano";
+	}
+	
+	private static String definirStatus(float salarioTotal){		
+		return salarioTotal > 1000 ? "Estavel" : "Instavel";
+	}
+	
+	private static void tratarParametros(String[] argumentos){
+		nome = argumentos[0];
+		sobrenome = argumentos[1];
+		idade = Integer.valueOf(argumentos[2]);
+		salario = Float.valueOf(argumentos[3]);
+		java = Boolean.valueOf(argumentos[4]);
+		qtdeMes = Integer.valueOf(argumentos[5]);
+		sexo = argumentos[6];
 	}
 
 	public static void main(String[] args){	
 		System.out.println("Hello, World");
 
 		if(validar(args.length)){
-
-			String nome = args[0];
-			String sobrenome = args[1];
-			int idade = Integer.valueOf(args[2]);
-			float salario = Float.valueOf(args[3]);
-			boolean java = Boolean.valueOf(args[4]);
-			int qtdeMes = Integer.valueOf(args[5]);
-
-			int anoNascimento = 2021 - idade;
-			float salarioTotal = salario * qtdeMes;
 			
-			String situacao = "Veterano";
-			if(idade < 50){
-				situacao = "Iniciante";
-			}
+			tratarParametros(args);
 
-			String status = "Instavel";
-			if(salarioTotal > 1000){
-				status = "Estavel";
-			}
+			int anoNascimento = calcularAnoNascimento(idade);
+			float salarioTotal = calcularSalarioTotal(salario, qtdeMes);			
+			String situacao = definirSituacao(idade);
+			String status = definirStatus(salarioTotal);
 
 			System.out.println("Nome: " + nome);
 			System.out.println("Sobrenome: " + sobrenome);

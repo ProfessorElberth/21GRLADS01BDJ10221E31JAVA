@@ -1,4 +1,4 @@
-package testes;
+package br.edu.infnet;
 
 public class SegundoTeste {
 	
