@@ -1,4 +1,4 @@
-package br.edu.infnet;
+package br.edu.infnet.testes;
 
 import java.util.Scanner;
 
@@ -43,5 +43,7 @@ public class SegundoTeste {
 			System.out.println("DOWHILE: " + nome +" - "+ idade +" - "+ salario);
 			b++;
 		}while(b < quantidade);
+		
+		in.close();
 	}
 }

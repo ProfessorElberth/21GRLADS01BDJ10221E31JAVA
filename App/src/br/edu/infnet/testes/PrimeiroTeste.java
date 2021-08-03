@@ -1,3 +1,5 @@
+package br.edu.infnet.testes;
+
 public class PrimeiroTeste {
 
 	private static String nome;
@@ -36,7 +38,7 @@ public class PrimeiroTeste {
 		qtdeMes = Integer.valueOf(argumentos[5]);
 	}
 	
-	private void impressao(){
+	private static void impressao(){
 		float salarioTotal = calcularSalarioTotal(salario, qtdeMes);
 		
 		System.out.println("Nome: " + nome);
