@@ -49,7 +49,7 @@ public class PrimeiroTeste {
 		System.out.println("Recebimentos: " + salarioTotal);
 		System.out.println("Devjava: " + java);
 		System.out.println("Situacao: " + definirSituacao(idade));
-		System.out.println("Status: " + definirStatus(calcularSalarioTotal(salario, qtdeMes)));
+		System.out.println("Status: " + definirStatus(salarioTotal));
 	}
 
 	public static void main(String[] args){	
