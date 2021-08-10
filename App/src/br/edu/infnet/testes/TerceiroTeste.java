@@ -47,22 +47,3 @@ public class TerceiroTeste {
 		}
 	}
 }
-
-//passo 3: atribuir valores ao vetor
-//nomes[0] = "Elberth";
-//nomes[1] = "Lins";
-//nomes[2] = "Costa";
-//nomes[3] = "de";
-//nomes[4] = "Moraes";
-
-//passo 4: leitura do vetor
-//System.out.println("Aluno: " + nomes[0]);
-//System.out.println(Arrays.asList(nomes));
-
-//for (String nome : nomes) {
-//	System.out.println("Aluno: " + nome);
-//}
-
-//for (int i = 0; i < nomes.length; i++) {
-//	System.out.println("Aluno: " + nomes[i]);
-//}
