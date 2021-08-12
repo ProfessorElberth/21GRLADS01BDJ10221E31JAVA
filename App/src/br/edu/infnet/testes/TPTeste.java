@@ -10,19 +10,40 @@ public class TPTeste {
 	private static float[] bonus;
 	private static float[] descontos;
 
-	private final static int QTDE_ALUNOS = 10;
+	private final static int QTDE = 2;
+	private final static float VALOR = 100;
 	
-	private static void impressao(int posicao){
-		System.out.printf("[%d] %s - %d anos - R$%.2f\n", 
-				posicao, nomes[posicao], idades[posicao], salarios[posicao]);
+	private static void impressao(int posicao)
+	{
+		
+		float calculoSalarial = calcularSalarioLiquido(posicao);
+		
+		System.out.printf("[%d] %s - %d anos || R$%.2f : %s\n", 
+				posicao, 
+				nomes[posicao], 
+				idades[posicao], 
+				calculoSalarial, 
+				obterSituacao(calculoSalarial)
+			);
+	}
+	
+	private static String obterSituacao(float salarioLiquido)
+	{
+		String situacao = salarioLiquido > VALOR ? "rico" : "pobre";
+
+		return situacao;
+	}
+	
+	private static float calcularSalarioLiquido(int posicao){
+		return salarios[posicao] + bonus[posicao] - descontos[posicao];
 	}
 	
 	public static void main(String[] args) {
-		nomes = new String[QTDE_ALUNOS];
-		idades = new int[QTDE_ALUNOS];
-		salarios = new float[QTDE_ALUNOS];
-		bonus = new float[QTDE_ALUNOS];
-		descontos = new float[QTDE_ALUNOS];
+		nomes = new String[QTDE];
+		idades = new int[QTDE];
+		salarios = new float[QTDE];
+		bonus = new float[QTDE];
+		descontos = new float[QTDE];
 		
 		Scanner in = new Scanner(System.in);
 		
@@ -41,30 +62,49 @@ public class TPTeste {
 
 			switch (opcao) {
 			case "1":
-
-				System.out.println("Informe o seu nome: ");
-				nomes[index] = in.next();
-
-				System.out.println("Informe a sua idade: ");
-				idades[index] = in.nextInt();
-
-				System.out.println("Informe o seu salário: ");
-				salarios[index] = in.nextFloat();
-
-				System.out.println("Informe o seu bônus: ");
-				bonus[index] = in.nextFloat();
-
-				System.out.println("Informe o seu desconto: ");
-				descontos[index] = in.nextFloat();
-
-				index++;
-
+				if(index < QTDE) {
+					System.out.println("Informe o seu nome: ");
+					nomes[index] = in.next();
+	
+					System.out.println("Informe a sua idade: ");
+					idades[index] = in.nextInt();
+	
+					System.out.println("Informe o seu salário: ");
+					salarios[index] = in.nextFloat();
+	
+					System.out.println("Informe o seu bônus: ");
+					bonus[index] = in.nextFloat();
+	
+					System.out.println("Informe o seu desconto: ");
+					descontos[index] = in.nextFloat();
+					
+					System.out.println("-----------------------------------");
+					System.out.println("Funcionário cadastrado com sucesso:");
+					impressao(index);
+					System.out.println("-----------------------------------");
+					System.out.println("");
+					
+					index++;
+				} else {
+					System.out.println("-----------------------------------");
+					System.out.println("Impossível realizar o cadastramento!!!");
+					System.out.println("-----------------------------------");
+					System.out.println("");
+				}
 				break;
 			case "2":
 				System.out.println("Informe o código do funcionário: ");
 				int codigo = in.nextInt();
-
-				impressao(codigo);
+								
+				if(codigo >= 0 && codigo < index) {
+					impressao(codigo);
+				} else {
+					System.out.println("-----------------------------------");
+					System.out.println("Este código não existe!!!");
+					System.out.println("-----------------------------------");
+					System.out.println("");
+				}
+				
 				break;
 				
 			case "3":
