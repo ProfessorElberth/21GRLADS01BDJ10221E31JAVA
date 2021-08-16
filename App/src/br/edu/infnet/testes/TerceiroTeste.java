@@ -30,8 +30,6 @@ public class TerceiroTeste {
 			System.out.println("[4] Sair");
 			System.out.print("Informe a opção desejada: ");
 			
-			int opcao = in.nextInt();
-
 			for(int i = 0 ; i<qtde ; i++) {
 				System.out.println("Informe o seu nome: ");
 				nomes[i] = in.next();

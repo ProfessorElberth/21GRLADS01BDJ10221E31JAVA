@@ -13,8 +13,7 @@ public class TPTeste {
 	private final static int QTDE = 2;
 	private final static float VALOR = 100;
 	
-	private static void impressao(int posicao)
-	{
+	private static void impressao(int posicao) {
 		
 		float calculoSalarial = calcularSalarioLiquido(posicao);
 		
@@ -27,14 +26,13 @@ public class TPTeste {
 			);
 	}
 	
-	private static String obterSituacao(float salarioLiquido)
-	{
+	private static String obterSituacao(float salarioLiquido) {
 		String situacao = salarioLiquido > VALOR ? "rico" : "pobre";
 
 		return situacao;
 	}
 	
-	private static float calcularSalarioLiquido(int posicao){
+	private static float calcularSalarioLiquido(int posicao) {
 		return salarios[posicao] + bonus[posicao] - descontos[posicao];
 	}
 	
