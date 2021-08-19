@@ -2,12 +2,12 @@ package br.edu.infnet.testes;
 
 import java.util.Scanner;
 
+import br.edu.infnet.auxiliar.Constante;
+
 public class TerceiroTeste {
 	
 	private static String[] nomes;
 
-	private final static int QTDE_ALUNOS = 10;
-	
 	private static void impressao(){
 		System.out.println("Nomes cadastrados: ");
 		for(String nome: nomes) {
@@ -19,7 +19,7 @@ public class TerceiroTeste {
 
 		int qtde = Integer.valueOf(args[0]);
 
-		if(qtde < QTDE_ALUNOS) {
+		if(qtde < Constante.QTDE_ALUNOS) {
 			nomes = new String[qtde];
 			
 			Scanner in = new Scanner(System.in);

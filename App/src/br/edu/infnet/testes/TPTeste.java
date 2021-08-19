@@ -2,6 +2,8 @@ package br.edu.infnet.testes;
 
 import java.util.Scanner;
 
+import br.edu.infnet.auxiliar.Constante;
+
 public class TPTeste {
 	
 	private static String[] nomes;
@@ -10,9 +12,6 @@ public class TPTeste {
 	private static float[] bonus;
 	private static float[] descontos;
 
-	private final static int QTDE = 2;
-	private final static float VALOR = 100;
-	
 	private static void impressao(int posicao) {
 		
 		float calculoSalarial = calcularSalarioLiquido(posicao);
@@ -27,7 +26,7 @@ public class TPTeste {
 	}
 	
 	private static String obterSituacao(float salarioLiquido) {
-		String situacao = salarioLiquido > VALOR ? "rico" : "pobre";
+		String situacao = salarioLiquido > Constante.VALOR ? "rico" : "pobre";
 
 		return situacao;
 	}
@@ -37,11 +36,11 @@ public class TPTeste {
 	}
 	
 	public static void main(String[] args) {
-		nomes = new String[QTDE];
-		idades = new int[QTDE];
-		salarios = new float[QTDE];
-		bonus = new float[QTDE];
-		descontos = new float[QTDE];
+		nomes = new String[Constante.QTDE];
+		idades = new int[Constante.QTDE];
+		salarios = new float[Constante.QTDE];
+		bonus = new float[Constante.QTDE];
+		descontos = new float[Constante.QTDE];
 		
 		Scanner in = new Scanner(System.in);
 		
@@ -60,7 +59,7 @@ public class TPTeste {
 
 			switch (opcao) {
 			case "1":
-				if(index < QTDE) {
+				if(index < Constante.QTDE) {
 					System.out.println("Informe o seu nome: ");
 					nomes[index] = in.next();
 	
