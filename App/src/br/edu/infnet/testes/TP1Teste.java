@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import br.edu.infnet.auxiliar.Constante;
 
-public class TPTeste {
+public class TP1Teste {
 	
 	private static String[] nomes;
 	private static int[] idades;

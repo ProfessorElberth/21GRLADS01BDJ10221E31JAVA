@@ -2,23 +2,23 @@ package br.edu.infnet.dominio;
 
 public class Programador extends Funcionario {
 
-	public boolean fullstack;
-	public String linguagem;
+	private boolean fullstack;
+	private String linguagem;
 	
 	private int posicao;
 	
 	public Programador() {
-		this.nome = "Javeiro";
+		this.setNome("Javeiro");
 	}
 	
 	public Programador(String nome, int idade) {
-		this.nome = nome;
-		this.idade = idade;
+		this.setNome(nome);
+		this.setIdade(idade);
 	}
 
 	public Programador(String nome, int idade, float salario, boolean fullstack, String linguagem) {
 		this(nome, idade);
-		this.salario = salario;
+		this.setSalario(salario);
 		this.fullstack = fullstack;
 		this.linguagem = linguagem;
 	}
@@ -31,8 +31,8 @@ public class Programador extends Funcionario {
 		return "java".equalsIgnoreCase(linguagem) ? 2000 : 750;
 	}
 	
-	private float calcularSalarioLiquido() {		
-		return salario + calcularSalarioFullstack() + calcularSalarioLinguagem();
+	public float calcularSalarioLiquido() {		
+		return getSalario() + calcularSalarioFullstack() + calcularSalarioLinguagem();
 	}
 	
 	private static String obterSituacao(float salarioLiquido) {
@@ -55,8 +55,8 @@ public class Programador extends Funcionario {
 
 		System.out.printf("[%d] %s - %d anos || R$%.2f : %s\n", 
 				posicao, 
-				nome, 
-				idade,
+				getNome(), 
+				getIdade(),
 				calculoSalarial, 
 				obterSituacao(calculoSalarial)
 			);
@@ -64,6 +64,22 @@ public class Programador extends Funcionario {
 	
 	@Override
  	public String toString() {
-		return "Sou o programador " + nome;
+		return "Sou o programador " + getNome();
+	}
+
+	public boolean isFullstack() {
+		return fullstack;
+	}
+
+	public void setFullstack(boolean fullstack) {
+		this.fullstack = fullstack;
+	}
+
+	public String getLinguagem() {
+		return linguagem;
+	}
+
+	public void setLinguagem(String linguagem) {
+		this.linguagem = linguagem;
 	}
 }
