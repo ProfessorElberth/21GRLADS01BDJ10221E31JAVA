@@ -4,39 +4,20 @@ import java.util.Scanner;
 
 import br.edu.infnet.auxiliar.Constante;
 import br.edu.infnet.dominio.Administrativo;
+import br.edu.infnet.dominio.Funcionario;
+import br.edu.infnet.dominio.Programador;
 
 public class TP3Teste {
 	
-	private static Administrativo[] administrativos;
+	private static Funcionario[] funcionarios;
 
-	private static void impressao(int posicao) {
-		
-		float calculoSalarial = calcularSalarioLiquido(posicao);
-		
-		System.out.printf("[%d] %s - %d anos || R$%.2f : %s\n", 
-				posicao, 
-				administrativos[posicao].getNome(), 
-				administrativos[posicao].getIdade(), 
-				calculoSalarial, 
-				obterSituacao(calculoSalarial)
-			);
+	private static void impressao(int posicao) {		
+		funcionarios[posicao].impressao();
 	}
-	
-	private static String obterSituacao(float salarioLiquido) {
-		String situacao = salarioLiquido > Constante.VALOR ? "rico" : "pobre";
 
-		return situacao;
-	}
-	
-	private static float calcularSalarioLiquido(int posicao) {
-		return administrativos[posicao].getSalario() + 
-			   administrativos[posicao].getBonus() - 
-			   administrativos[posicao].getDesconto();
-	}
-	
 	public static void main(String[] args) {
 		
-		administrativos = new Administrativo[Constante.QTDE];
+		funcionarios = new Funcionario[Constante.QTDE];
 		
 		Scanner in = new Scanner(System.in);
 		
@@ -45,10 +26,11 @@ public class TP3Teste {
 		int index = 0;
 		
 		do {
-			System.out.println("[1] Cadastrar");
-			System.out.println("[2] Consultar um");
-			System.out.println("[3] Consultar todos");
-			System.out.println("[4] Sair");
+			System.out.println("[1] Cadastrar Administrativo");
+			System.out.println("[2] Cadastrar Programador");
+			System.out.println("[3] Consultar um");
+			System.out.println("[4] Consultar todos");
+			System.out.println("[9] Sair");
 			System.out.print("Informe a opção desejada: ");
 			
 			opcao = in.next();
@@ -74,7 +56,7 @@ public class TP3Teste {
 					System.out.println("Informe o seu desconto: ");
 					adm.setDesconto(in.nextFloat());
 					
-					administrativos[index] = adm;
+					funcionarios[index] = adm;
 					
 					System.out.println("-----------------------------------");
 					System.out.println("Funcionário cadastrado com sucesso:");
@@ -90,7 +72,45 @@ public class TP3Teste {
 					System.out.println("");
 				}
 				break;
+				
 			case "2":
+				if(index < Constante.QTDE) {
+					
+					Programador prog = new Programador();
+					
+					System.out.println("Informe o seu nome: ");
+					prog.setNome(in.next());
+	
+					System.out.println("Informe a sua idade: ");
+					prog.setIdade(in.nextInt());
+	
+					System.out.println("Informe o seu salário: ");
+					prog.setSalario(in.nextFloat());
+	
+					System.out.println("Informe se você é fullstack: ");
+					prog.setFullstack(in.nextBoolean());
+	
+					System.out.println("Informe a sua linguagem: ");
+					prog.setLinguagem(in.next());
+					
+					funcionarios[index] = prog;
+					
+					System.out.println("-----------------------------------");
+					System.out.println("Funcionário cadastrado com sucesso:");
+					impressao(index);
+					System.out.println("-----------------------------------");
+					System.out.println("");
+					
+					index++;
+				} else {
+					System.out.println("-----------------------------------");
+					System.out.println("Impossível realizar o cadastramento!!!");
+					System.out.println("-----------------------------------");
+					System.out.println("");
+				}
+				break;
+				
+			case "3":
 				System.out.println("Informe o código do funcionário: ");
 				int codigo = in.nextInt();
 								
@@ -105,13 +125,13 @@ public class TP3Teste {
 				
 				break;
 				
-			case "3":
+			case "4":
 				for(int i = 0;i<index;i++) {
 					impressao(i);
 				}
 				break;
 				
-			case "4":
+			case "9":
 				System.out.println("Saindo...");
 				break;
 
@@ -120,7 +140,7 @@ public class TP3Teste {
 				break;
 			}
 			
-		} while (!"4".equals(opcao));
+		} while (!"9".equals(opcao));
 		
 		System.out.println("Terminou!!!");
 		

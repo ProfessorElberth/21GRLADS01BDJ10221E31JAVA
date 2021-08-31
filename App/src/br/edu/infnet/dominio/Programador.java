@@ -5,8 +5,6 @@ public class Programador extends Funcionario {
 	private boolean fullstack;
 	private String linguagem;
 	
-	private int posicao;
-	
 	public Programador() {
 		this.setNome("Javeiro");
 	}

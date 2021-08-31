@@ -7,7 +7,7 @@ public abstract class Funcionario {
 	private int idade;
 	private float salario;
 	
-	private int posicao;
+	protected static int posicao;
 
 	public Funcionario() {
 		this.nome = "Fantasma";
@@ -39,7 +39,7 @@ public abstract class Funcionario {
 		float calculoSalarial = calcularSalarioLiquido();
 
 		System.out.printf("[%d] %s - %d anos || R$%.2f : %s\n", 
-				posicao, 
+				posicao++, 
 				nome, 
 				idade,
 				calculoSalarial, 
