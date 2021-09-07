@@ -1,12 +1,20 @@
 package br.edu.infnet.dominio;
 
+import br.edu.infnet.exceptions.FaturamentoInvalidoException;
+import br.edu.infnet.exceptions.NomeIncompletoException;
+
 public class Empresa {
 
 	private String nome;
 	private String sobrenome;
 	private String ultimonome;
+	private float faturamento;
 	
-	public String getNome() {
+	public String getNome() throws NomeIncompletoException {
+
+		if(ultimonome == null || nome == null || sobrenome == null) {
+			throw new NomeIncompletoException("O preenchimento do campo 'nome' está incorreto");
+		}
 		
 		StringBuilder sb = new StringBuilder();	
 		sb.append(ultimonome.toUpperCase().charAt(0));
@@ -17,9 +25,9 @@ public class Empresa {
 		sb.append(" ");
 		sb.append(sobrenome.toLowerCase());
 		sb.append(".");
-		
 		return sb.toString();
 	}
+	
 	public void setNome(String nome) {
 
 		int posInicial = nome.indexOf(" ");
@@ -30,13 +38,20 @@ public class Empresa {
 		this.ultimonome = nome.substring(posFinal).trim();
 	}
 	
-	public void impressao() {
-		
-		System.out.println(this);
+	public void impressao() throws NomeIncompletoException {		
+		System.out.println(getNome() + " - " + getFaturamento());
 	}
 
-	@Override
-	public String toString() {
-		return getNome();
+	public float getFaturamento() {
+		return faturamento;
+	}
+
+	public void setFaturamento(float faturamento) throws FaturamentoInvalidoException {
+		
+		if(faturamento <= 0) {
+			throw new FaturamentoInvalidoException("Faturamento inválido! Precisa ser maior que zero");
+		}
+				
+		this.faturamento = faturamento;
 	}
 }
