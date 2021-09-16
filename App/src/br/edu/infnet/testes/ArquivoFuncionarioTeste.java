@@ -3,6 +3,10 @@ package br.edu.infnet.testes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.infnet.exceptions.ArquivoCorrompidoException;
 
 public class ArquivoFuncionarioTeste {
 
@@ -11,9 +15,7 @@ public class ArquivoFuncionarioTeste {
 		String dir = "C:/dev/";
 		String arq = "out_funcionarios.txt";
 		
-		String[] mensagens = new String[7];
-
-		//TODO Apresentar o conceito de List
+		List<String> mensagens = new ArrayList<String>();
 
 		try {
 			
@@ -26,22 +28,30 @@ public class ArquivoFuncionarioTeste {
 				
 				linha = leitura.readLine();
 				
-				int index = 0;
+				int qtdeTotal = 0;
+				float valorTotal = 0;
+				int qtde = 0;
+				float valor = 0;
 				
 				while(linha != null) {
 					
 					campos = linha.split(";");
 					
-					//TODO Validação
+					try {
+						qtdeTotal = Integer.valueOf(campos[0]);
+						valorTotal = Float.valueOf(campos[1]);
+					} catch (NumberFormatException e) {
+						qtde++;
+						valor = valor + Float.valueOf(campos[1]);
+						mensagens.add(String.format("O funcionário %s recebe %.2f", campos[0], Float.valueOf(campos[1])));
+					}
 
-					mensagens[index++] = String.format("O funcionário %s recebe %.2f", campos[0], Float.valueOf(campos[1]));
-
-					//TODO Lançar exception
-					
 					linha = leitura.readLine();
 				}
 				
-				//TODO Tratar exception
+				if(qtdeTotal != qtde || valorTotal != valor) {
+					throw new ArquivoCorrompidoException("Arquivo Corrompido");
+				}
 
 				for(String msg : mensagens) {
 					System.out.println(msg);
@@ -49,7 +59,7 @@ public class ArquivoFuncionarioTeste {
 				
 				leitura.close();
 				file.close();
-			} catch (IOException e) {
+			} catch (ArquivoCorrompidoException | IOException e) {
 				System.out.println(e.getMessage());
 			}
 			

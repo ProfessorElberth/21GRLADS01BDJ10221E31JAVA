@@ -1,0 +1,42 @@
+CLASSE PRINCIPAL = Pedido
+CLASSE DE ASSOCIAÇÃO = Solicitante
+CLASSE MÃE = Produto
+CLASSES FILHAS = Bebida, Comida, Sobremesa
+
+#relacionamentos:
+
+- Um pedido é para um solicitante.
+- Um pedido pode ter vários produtos.
+- Existem três tipos de produto.
+
+Pedido:
+- atrib1
+- atrib2
+- atrib3
+- Solicitante
+- Lista<Produto)
+
+Solicitante
+- atrib1
+- atrib2
+- atrib3
+
+Produto - abstract
+- atrib1
+- atrib2
+- atrib3
+
+Bebida herda de Produto
+- atrib1
+- atrib2
+- atrib3
+
+Comida herda de Produto
+- atrib1
+- atrib2
+- atrib3
+
+Sobremesa herda de Produto
+- atrib1
+- atrib2
+- atrib3
