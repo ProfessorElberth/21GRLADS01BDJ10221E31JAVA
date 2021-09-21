@@ -2,6 +2,7 @@ package br.edu.infnet.apppedido.model.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class Pedido {
 
@@ -9,7 +10,8 @@ public class Pedido {
 	private LocalDateTime data;
 	private boolean web;
 	private Solicitante solicitante;
-	
+	private List<Produto> produtos;
+
 	public Pedido() {
 		data = LocalDateTime.now();
 	}
@@ -27,6 +29,10 @@ public class Pedido {
 		sb.append(web ? "web" : "loja");
 		sb.append(";");
 		sb.append(solicitante.toString());
+		sb.append(";");
+		if(produtos != null) {
+			sb.append(produtos.size());
+		}
 		
 		return sb.toString();
 	}
@@ -48,5 +54,13 @@ public class Pedido {
 	}
 	public void setSolicitante(Solicitante solicitante) {
 		this.solicitante = solicitante;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 }

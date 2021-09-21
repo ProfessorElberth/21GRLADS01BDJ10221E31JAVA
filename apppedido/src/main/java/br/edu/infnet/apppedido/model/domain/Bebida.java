@@ -1,5 +1,7 @@
 package br.edu.infnet.apppedido.model.domain;
 
+import br.edu.infnet.apppedido.model.exceptions.TamanhoNegativoException;
+
 public class Bebida extends Produto {
 
 	private boolean gelada;
@@ -45,7 +47,12 @@ public class Bebida extends Produto {
 		return tamanho;
 	}
 
-	public void setTamanho(float tamanho) {
+	public void setTamanho(float tamanho) throws TamanhoNegativoException {
+		
+		if(tamanho <= 0) {
+			throw new TamanhoNegativoException("Impossível calcular o valor de venda com o tamanho zerado!!!");
+		}
+		
 		this.tamanho = tamanho;
 	}
 
