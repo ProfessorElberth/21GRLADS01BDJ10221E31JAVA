@@ -7,8 +7,10 @@ import br.edu.infnet.apppedido.model.domain.Bebida;
 import br.edu.infnet.apppedido.model.domain.Comida;
 import br.edu.infnet.apppedido.model.domain.Pedido;
 import br.edu.infnet.apppedido.model.domain.Produto;
+import br.edu.infnet.apppedido.model.domain.Sobremesa;
 import br.edu.infnet.apppedido.model.domain.Solicitante;
 import br.edu.infnet.apppedido.model.exceptions.PesoZeradoException;
+import br.edu.infnet.apppedido.model.exceptions.QuantidadeNegativaException;
 import br.edu.infnet.apppedido.model.exceptions.TamanhoNegativoException;
 
 public class PedidoTeste {
@@ -41,12 +43,23 @@ public class PedidoTeste {
 		} catch (TamanhoNegativoException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		Sobremesa bolinho = new Sobremesa("Bolo do velho", 6, 432);
+		try {
+			bolinho.setDoce(true);
+			bolinho.setInformacao("Mais alguma coisa");
+			bolinho.setQuantidade(123);
+		} catch (QuantidadeNegativaException e) {
+			System.out.println(e.getMessage());
+		}
+		
 
 		List<Produto> listaLanche = new ArrayList<Produto>();		
 		listaLanche.add(hamburguer);
+		listaLanche.add(bolinho);
 		
 		List<Produto> listaChopinho = new ArrayList<Produto>();
-		listaLanche.add(refri);
+		listaChopinho.add(refri);
 		listaChopinho.add(caldereta);
 
 		Solicitante solicitante = new Solicitante("maria", "987987987-98", "maria@maria.com");

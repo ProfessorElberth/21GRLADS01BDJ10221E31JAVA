@@ -5,11 +5,18 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.infnet.apppedido.model.domain.Bebida;
 import br.edu.infnet.apppedido.model.domain.Comida;
 import br.edu.infnet.apppedido.model.domain.Pedido;
+import br.edu.infnet.apppedido.model.domain.Produto;
+import br.edu.infnet.apppedido.model.domain.Sobremesa;
 import br.edu.infnet.apppedido.model.domain.Solicitante;
+import br.edu.infnet.apppedido.model.exceptions.PesoZeradoException;
+import br.edu.infnet.apppedido.model.exceptions.QuantidadeNegativaException;
+import br.edu.infnet.apppedido.model.exceptions.TamanhoNegativoException;
 
 public class ArquivoTeste {
 
@@ -31,6 +38,9 @@ public class ArquivoTeste {
 				String[] campos;
 				
 				linha = leitura.readLine();
+				
+				List<Produto> produtos = new ArrayList<Produto>();
+				Pedido pedido = new Pedido();
 
 				while(linha != null) {
 					
@@ -43,12 +53,9 @@ public class ArquivoTeste {
 								campos[4]
 							);
 
-						Pedido pedido = new Pedido();
 						pedido.setDescricao(campos[0]);
 						pedido.setWeb(Boolean.valueOf(campos[1]));
 						pedido.setSolicitante(solicitante);
-						
-						System.out.println(pedido);
 					} else {
 						switch (campos[0]) {
 						case "B":
@@ -57,6 +64,15 @@ public class ArquivoTeste {
 									Float.valueOf(campos[2]), 
 									Integer.valueOf(campos[3])
 								);
+							try {
+								bebida.setGelada(Boolean.valueOf(campos[4]));
+								bebida.setTamanho(Float.valueOf(campos[5]));
+								bebida.setMarca(campos[6]);
+								
+								produtos.add(bebida);
+							} catch (NumberFormatException | TamanhoNegativoException e) {
+								System.out.println(e.getMessage());
+							}
 
 							break;
 
@@ -66,16 +82,33 @@ public class ArquivoTeste {
 									Float.valueOf(campos[2]), 
 									Integer.valueOf(campos[3])
 								);
+							try {
+								comida.setPeso(Float.valueOf(campos[4]));
+								comida.setVegano(Boolean.valueOf(campos[5]));
+								comida.setIngredientes(campos[6]);
+								
+								produtos.add(comida);
+							} catch (NumberFormatException | PesoZeradoException e) {
+								System.out.println(e.getMessage());
+							}
 
 							break;
 
 						case "S":
-							//TODO Implementar a classe de sobremesa
-//							Sobremesa sobremesa = new Sobremesa(
-//									campos[1],
-//									Float.valueOf(campos[2]), 
-//									Integer.valueOf(campos[3])
-//								);
+							Sobremesa sobremesa = new Sobremesa(
+									campos[1],
+									Float.valueOf(campos[2]), 
+									Integer.valueOf(campos[3])
+								);
+							try {
+								sobremesa.setDoce(Boolean.valueOf(campos[4]));
+								sobremesa.setInformacao(campos[5]);
+								sobremesa.setQuantidade(Float.valueOf(campos[6]));
+								
+								produtos.add(sobremesa);
+							} catch (NumberFormatException | QuantidadeNegativaException e) {
+								System.out.println(e.getMessage());
+							}	
 							break;
 							
 						default:
@@ -87,7 +120,16 @@ public class ArquivoTeste {
 					linha = leitura.readLine();
 				}
 				
-//				escrita.write(qtde+";"+somaSalarial+"\r\n");
+				pedido.setProdutos(produtos);
+
+				for(Produto prod : pedido.getProdutos()) {
+					escrita.write(
+							pedido.getDescricao()+";"+
+							pedido.getSolicitante().getNome()+";"+
+							prod.getNome()+";"+
+							prod.calcularValorVenda()+"\r\n"
+						);
+				}
 
 				leitura.close();
 				file.close();
