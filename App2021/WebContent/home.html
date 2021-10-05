@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<form action="confirmacao.html" method="post">	
+		<h3>Nome:</h3>	
+		<input type="text" name="nome">
+	
+		<h3>E-mail:</h3>	
+		<input type="email" name="email">
+		
+		<h3>Escolaridade:</h3>
+		<input type="radio" name="escolaridade" value="G"> Graduação 
+		<input type="radio" name="escolaridade" value="E"> Especialização
+		<input type="radio" name="escolaridade" value="M"> Mestrado
+		<input type="radio" name="escolaridade" value="D"> Doutorado
+		
+		<h3>Disciplinas:</h3>
+		<input type="checkbox" name="disciplinas" value="POO"> Orientação a objetos
+		<input type="checkbox" name="disciplinas" value="FUN"> Fundamentos Java
+		<input type="checkbox" name="disciplinas" value="WEB"> Java Web
+		<input type="checkbox" name="disciplinas" value="NUV"> Java Nuvem
+	
+		<h3>Regiões:</h3>
+		<select name="regiao">
+			<option value="S">Sul</option>
+			<option value="Su">Sudeste</option>
+			<option value="N">Norte</option>
+			<option value="No">Nordeste</option>
+			<option value="C">Centro-Oeste</option>
+		</select>
+		
+		<button type="submit">Cadastrar</button>
+	</form>
+</body>
+</html>
