@@ -7,15 +7,15 @@
 </head>
 <body>
 	<div class="container">	
-		<form action="confirmacao.html" method="post">	
+		<form action="aluno" method="post">	
 			<div class="form-group">
 		      <label>Nome:</label>
-		      <input type="text" class="form-control" placeholder="Entre com o seu nome" name="nome">
+		      <input value="Elberth Moraes" type="text" class="form-control" placeholder="Entre com o seu nome" name="nome">
 		    </div>			
 		
 			<div class="form-group">
 		      <label>E-mail:</label>
-		      <input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
+		      <input value="elberth@moraes.com" type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
 		    </div>			
 			
 			<div class="form-group">
@@ -32,7 +32,7 @@
 				</div>			
 				<div class="form-check-inline">
 				  <label class="form-check-label">
-				    <input type="radio" name="escolaridade" class="form-check-input" value="M"> Mestrado
+				    <input checked type="radio" name="escolaridade" class="form-check-input" value="M"> Mestrado
 				  </label>
 				</div>			
 				<div class="form-check-inline">
@@ -51,12 +51,12 @@
 				</div>			
 				<div class="form-check-inline">
 				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="FUN"> Fundamentos Java
+				    <input checked type="checkbox" name="disciplinas" class="form-check-input" value="FUN"> Fundamentos Java
 				  </label>
 				</div>			
 				<div class="form-check-inline">
 				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="WEB"> Java Web
+				    <input checked type="checkbox" name="disciplinas" class="form-check-input" value="WEB"> Java Web
 				  </label>
 				</div>			
 				<div class="form-check-inline">
@@ -69,7 +69,7 @@
 		      <label>Regiões:</label>
 				<select class="form-control" name="regiao">
 					<option value="S">Sul</option>
-					<option value="Su">Sudeste</option>
+					<option selected value="Su">Sudeste</option>
 					<option value="N">Norte</option>
 					<option value="No">Nordeste</option>
 					<option value="C">Centro-Oeste</option>
