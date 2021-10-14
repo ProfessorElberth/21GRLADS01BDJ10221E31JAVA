@@ -8,77 +8,10 @@
 </head>
 <body>
 	<div class="container">	
-		<form action="confirmacao.html" method="post">	
-			<div class="form-group">
-		      <label>Nome:</label>
-		      <input type="text" class="form-control" placeholder="Entre com o seu nome" name="nome">
-		    </div>			
+
+		<h3>Elberth Moraes</h3>
 		
-			<div class="form-group">
-		      <label>E-mail:</label>
-		      <input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
-		    </div>			
-			
-			<div class="form-group">
-		      <label>Escolaridade:</label>
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="radio" name="escolaridade" class="form-check-input" value="G"> Graduação
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="radio" name="escolaridade" class="form-check-input" value="E"> Especialização
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="radio" name="escolaridade" class="form-check-input" value="M"> Mestrado
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="radio" name="escolaridade" class="form-check-input" value="D"> Doutorado
-				  </label>
-				</div>			
-			</div>
-			
-			<div class="form-group">
-		      <label>Disciplinas:</label>
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="POO"> Orientação a objetos
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="FUN"> Fundamentos Java
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="WEB"> Java Web
-				  </label>
-				</div>			
-				<div class="form-check-inline">
-				  <label class="form-check-label">
-				    <input type="checkbox" name="disciplinas" class="form-check-input" value="NUV"> Java Nuvem
-				  </label>
-				</div>			
-			</div>
-			<div class="form-group">
-		      <label>Regiões:</label>
-				<select class="form-control" name="regiao">
-					<option value="S">Sul</option>
-					<option value="Su">Sudeste</option>
-					<option value="N">Norte</option>
-					<option value="No">Nordeste</option>
-					<option value="C">Centro-Oeste</option>
-				</select>
-			</div>
-			
-			<button class="btn btn-primary" type="submit">Cadastrar</button>
-		</form>
+		<h4>Cadastramento de <a href="/aluno">alunos</a></h4>
 	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package br.edu.infnet.model.domain;
+package br.edu.infnet.apppedido.model.domain;
 
 public class Aluno {
 
@@ -19,10 +19,10 @@ public class Aluno {
 	public String toString() {
 
 		return String.format("[%s] O aluno %s (%s) "
-				+ "da região %s "
+				+ "da regiï¿½o %s "
 				+ "tem %d anos "
 				+ "e paga %.2f de mensalidade "
-				+ "está inscrito em %d disciplinas!", 
+				+ "estï¿½ inscrito em %d disciplinas!", 
 				escolaridade,
 				nome,
 				email,
