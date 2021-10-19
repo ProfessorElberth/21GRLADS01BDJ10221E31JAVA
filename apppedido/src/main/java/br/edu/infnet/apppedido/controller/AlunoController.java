@@ -17,8 +17,8 @@ public class AlunoController {
 	@PostMapping(value = "/aluno/incluir")
 	public String incluir(Aluno aluno) {
 		
-		System.out.println("A inclusão do aluno "+ aluno.getNome() +" foi realizada com sucesso!!!");
+		aluno.impressao();
 		
-		return "aluno/cadastro";
+		return "confirmacao";
 	}
 }

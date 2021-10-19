@@ -2,7 +2,6 @@ package br.edu.infnet.model.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,14 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.model.domain.Aluno;
+import br.edu.infnet.model.repository.AlunoRepository;
 
 public class AlunoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private List<Aluno> lista;
-	
 	public AlunoController() {
-		lista = new ArrayList<Aluno>();
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
@@ -34,7 +32,7 @@ public class AlunoController extends HttpServlet {
 		aluno.setDisciplinas(request.getParameterValues("disciplinas"));
 		aluno.setRegiao(request.getParameter("regiao"));
 		
-		lista.add(aluno);
+		AlunoRepository.incluir(aluno);
 
 		PrintWriter out = response.getWriter();
 
@@ -53,10 +51,12 @@ public class AlunoController extends HttpServlet {
 				"			<button class=\"btn btn-primary\" type=\"submit\">Voltar</button>" + 
 				"		</form>"); 
 
-		out.println("<hr>");
-		out.println("<h4>Listagem de alunos ("+lista.size()+"):</h4>");
+		List<Aluno> alunos = AlunoRepository.obterLista();
 		
-		for(Aluno a : lista) {
+		out.println("<hr>");
+		out.println("<h4>Listagem de alunos ("+alunos.size()+"):</h4>");
+		
+		for(Aluno a : alunos) {
 			out.println("<h5>" + a.getNome() + " - " + a.getEmail() + "</h5>");
 		}
 
