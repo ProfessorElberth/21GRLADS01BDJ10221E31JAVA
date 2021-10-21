@@ -18,7 +18,7 @@ public class AcessoController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("login.html").forward(request, response);
+//		request.getRequestDispatcher("login.html").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,9 @@ public class AcessoController extends HttpServlet {
 		if(usuario != null) {
 			request.getRequestDispatcher("home.html").forward(request, response);
 		} else {
-			request.getRequestDispatcher("erro.html").forward(request, response);
+			request.setAttribute("msg", email + ", autenticação inválida.. tente novamente!!!"); 
+
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
 }
