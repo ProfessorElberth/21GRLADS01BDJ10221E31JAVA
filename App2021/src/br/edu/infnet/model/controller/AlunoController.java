@@ -1,7 +1,6 @@
 package br.edu.infnet.model.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +17,14 @@ public class AlunoController extends HttpServlet {
 
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		request.getRequestDispatcher("home.html").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		if("confirmacao".equals(request.getParameter("tela"))) {
+			request.setAttribute("listaAlunos", AlunoRepository.obterLista());
+			request.getRequestDispatcher("aluno/lista.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("aluno/cadastro.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +39,6 @@ public class AlunoController extends HttpServlet {
 		AlunoRepository.incluir(aluno);
 		
 		request.setAttribute("nomeAluno", aluno.getNome());
-		request.setAttribute("listaAlunos", AlunoRepository.obterLista());
 		
 		request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
 	}

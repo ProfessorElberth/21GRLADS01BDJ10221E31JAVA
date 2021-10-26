@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.infnet.model.domain.Usuario;
 import br.edu.infnet.model.repository.AcessoRepository;
+import br.edu.infnet.model.repository.AlunoRepository;
 
 public class AcessoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,8 @@ public class AcessoController extends HttpServlet {
 		Usuario usuario = AcessoRepository.validar(email, senha);
 		
 		if(usuario != null) {
-			request.getRequestDispatcher("home.html").forward(request, response);
+			request.setAttribute("listaAlunos", AlunoRepository.obterLista());
+			request.getRequestDispatcher("aluno/lista.jsp").forward(request, response);
 		} else {
 			request.setAttribute("msg", email + ", autenticação inválida.. tente novamente!!!"); 
 

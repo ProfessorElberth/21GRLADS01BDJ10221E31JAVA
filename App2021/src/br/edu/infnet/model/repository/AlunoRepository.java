@@ -29,6 +29,8 @@ public class AlunoRepository {
 	}
 	
 	public static List<Aluno> obterLista(){
+		prepara();
+		
 		return lista;		
 	}
 }
