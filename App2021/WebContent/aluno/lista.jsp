@@ -23,6 +23,7 @@
 		<table class="table table-striped">
 		    <thead>
 		      <tr>
+		        <th>#</th>
 		        <th>Nome</th>
 		        <th>Email</th>
 		      </tr>
@@ -30,6 +31,7 @@
 		    <tbody>
 			  <%for(Aluno a : alunos) {%>
 		      <tr>
+		      	<td><%=a.getId()%></td>
 		        <td><%=a.getNome()%></td>
 		        <td><%=a.getEmail()%></td>
 		      </tr>

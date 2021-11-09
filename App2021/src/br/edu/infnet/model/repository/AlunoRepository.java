@@ -1,36 +1,60 @@
 package br.edu.infnet.model.repository;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.infnet.conexao.Conexao;
 import br.edu.infnet.model.domain.Aluno;
 
 public class AlunoRepository {
 
-	private static List<Aluno> lista;
-	
-	private static void prepara(){
-		if(lista == null) {
-			lista = new ArrayList<Aluno>();
-		}
-	}
-	
 	public static boolean incluir(Aluno aluno) {
 		
 		try {
-			prepara();
-			
-			lista.add(aluno);
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(
+					"INSERT INTO TAluno (nome, email) VALUES (?,?)"
+				);
+			ps.setString(1, aluno.getNome());
+			ps.setString(2, aluno.getEmail());
+			ps.execute();
 			
 			return true;
-		} catch (Exception e) {
-			return false;
-		}		
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public static List<Aluno> obterLista(){
-		prepara();
+
+		List<Aluno> lista = new ArrayList<Aluno>();
 		
-		return lista;		
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(
+					"SELECT * FROM TAluno ORDER BY nome"
+				);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				Aluno aluno = new Aluno(rs.getString("nome"), rs.getString("email"));
+				aluno.setId(rs.getInt("id"));
+				
+				lista.add(aluno);
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 }
