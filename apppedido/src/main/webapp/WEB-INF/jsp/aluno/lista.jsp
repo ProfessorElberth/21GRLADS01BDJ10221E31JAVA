@@ -11,27 +11,19 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">AppPedido</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="/alunos">Aluno</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	    </ul>
-	  </div>
-	</nav>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">	
 		
-		<a href="aluno">Novo aluno</a>
+		<a href="/aluno">Novo aluno</a>
 	
 		<hr>
+		
+		<c:if test="${not empty nome}">
+			<div class="alert alert-success">
+				 <strong>Confirmação!</strong> Aluno ${nome} cadastrado com sucesso!!!
+			</div>
+		</c:if>
 		
 		<c:if test="${not empty listaAlunos}">
 		

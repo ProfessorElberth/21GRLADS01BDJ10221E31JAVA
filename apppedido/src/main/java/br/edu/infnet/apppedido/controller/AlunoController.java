@@ -36,7 +36,7 @@ public class AlunoController {
 
 		model.addAttribute("nome", aluno.getNome());
 
-		return "confirmacao";
+		return telaLista(model);
 	}
 	
 	@GetMapping(value = "/aluno/{id}/excluir")
