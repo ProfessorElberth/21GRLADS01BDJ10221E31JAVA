@@ -21,6 +21,7 @@ public class DataLoader implements ApplicationRunner {
 		usuario.setEmail("elberth.moraes@prof.infnet.edu.br");
 		usuario.setNome("Elberth Moraes");
 		usuario.setSenha("123");
+		usuario.setAdmin(true);
 		
 		usuarioRepository.save(usuario);
 	}

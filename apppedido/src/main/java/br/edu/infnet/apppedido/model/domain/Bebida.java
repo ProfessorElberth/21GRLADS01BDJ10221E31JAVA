@@ -1,12 +1,21 @@
 package br.edu.infnet.apppedido.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.apppedido.model.exceptions.TamanhoNegativoException;
 
+@Entity
+@Table(name = "TBebida")
 public class Bebida extends Produto {
 
 	private boolean gelada;
 	private float tamanho;
 	private String marca; 
+	
+	public Bebida() {
+		//
+	}
 	
 	public Bebida(String nome, float valor, int codigo) {
 		super(nome, valor, codigo);

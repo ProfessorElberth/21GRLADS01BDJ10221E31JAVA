@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.apppedido.model.domain.Aluno;
+import br.edu.infnet.apppedido.model.domain.Usuario;
 import br.edu.infnet.apppedido.model.service.AlunoService;
 
 @Controller
@@ -22,21 +24,23 @@ public class AlunoController {
 	}
 	
 	@GetMapping(value = "/alunos")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listaAlunos", alunoService.obterLista());
+		model.addAttribute("listaAlunos", alunoService.obterLista(usuario));
 		
 		return "aluno/lista";
 	}
 
 	@PostMapping(value = "/aluno/incluir")
-	public String incluir(Model model, Aluno aluno) {
+	public String incluir(Model model, Aluno aluno, @SessionAttribute("user") Usuario usuario) {
+		
+		aluno.setUsuario(usuario);
 		
 		alunoService.incluir(aluno);
 
 		model.addAttribute("nome", aluno.getNome());
 
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 	@GetMapping(value = "/aluno/{id}/excluir")

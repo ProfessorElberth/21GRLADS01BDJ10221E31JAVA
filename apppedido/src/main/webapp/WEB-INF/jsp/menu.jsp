@@ -11,7 +11,8 @@
       
       <c:if test="${not empty user}">
       	<li><a href="/alunos">Aluno</a></li>
-      	<li><a href="#">Bebida</a></li>
+      	<li><a href="/usuarios">Usuário</a></li>
+      	<li><a href="/bebidas">Bebida</a></li>
       	<li><a href="#">Comida</a></li>
       	<li><a href="#">Sobremesa</a></li>
       	<li><a href="#">Produtos</a></li>

@@ -14,45 +14,51 @@
 
 	<div class="container">	
 		
-		<a href="/aluno">Novo aluno</a>
+		<a href="/bebida">Nova bebida</a>
 	
 		<hr>
 		
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> Aluno ${nome} cadastrado com sucesso!!!
+				 <strong>Confirmação!</strong> A bebida ${nome} foi cadastrada com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaAlunos}">
+		<c:if test="${not empty listaBebidas}">
 		
-			<h4>Listagem de alunos (${listaAlunos.size()}):</h4>		
+			<h4>Listagem de bebidas (${listaBebidas.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
 			        <th>#</th>
 			        <th>Nome</th>
-			        <th>Email</th>
-			        <th>Usuário</th>
+			        <th>Valor</th>
+			        <th>Código</th>
+			        <th>Gelada</th>
+			        <th>Tamanho</th>
+			        <th>Marca</th>
 			        <th></th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="a" items="${listaAlunos}">
+			    	<c:forEach var="b" items="${listaBebidas}">
 				      <tr>
-				      	<td>${a.id}</td>
-				        <td>${a.nome}</td>
-				        <td>${a.email}</td>
-				        <td>${a.usuario.nome}</td>
-				        <td><a href="/aluno/${a.id}/excluir">Excluir</a></td>
+				      	<td>${b.id}</td>
+				        <td>${b.nome}</td>
+				        <td>${b.valor}</td>
+				        <td>${b.codigo}</td>
+				        <td>${b.gelada}</td>
+				        <td>${b.tamanho}</td>
+				        <td>${b.marca}</td>
+				        <td><a href="/bebida/${b.id}/excluir">Excluir</a></td>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaAlunos}">
-	  		<h4>Não existem alunos cadastrados!</h4>
+	  	<c:if test="${empty listaBebidas}">
+	  		<h4>Não existem bebidas cadastradas!</h4>
 	  	</c:if>
 	</div>
 </body>

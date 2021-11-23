@@ -14,45 +14,45 @@
 
 	<div class="container">	
 		
-		<a href="/aluno">Novo aluno</a>
-	
-		<hr>
-		
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> Aluno ${nome} cadastrado com sucesso!!!
+				 <strong>Confirmação!</strong> Usuário ${nome} cadastrado com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaAlunos}">
+		<c:if test="${not empty listaUsuarios}">
 		
-			<h4>Listagem de alunos (${listaAlunos.size()}):</h4>		
+			<h4>Listagem de usuários (${listaUsuarios.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
 			        <th>#</th>
 			        <th>Nome</th>
 			        <th>Email</th>
-			        <th>Usuário</th>
-			        <th></th>
+			        <th>Alunos</th>
+			        <c:if test="${user.admin}">
+			        	<th></th>
+			        </c:if>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="a" items="${listaAlunos}">
+			    	<c:forEach var="u" items="${listaUsuarios}">
 				      <tr>
-				      	<td>${a.id}</td>
-				        <td>${a.nome}</td>
-				        <td>${a.email}</td>
-				        <td>${a.usuario.nome}</td>
-				        <td><a href="/aluno/${a.id}/excluir">Excluir</a></td>
+				      	<td>${u.id}</td>
+				        <td>${u.nome}</td>
+				        <td>${u.email}</td>
+				        <td>${u.alunos.size()}</td>
+				        <c:if test="${user.admin}">
+				        	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
+				        </c:if>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaAlunos}">
-	  		<h4>Não existem alunos cadastrados!</h4>
+	  	<c:if test="${empty listaUsuarios}">
+	  		<h4>Não existem usuários cadastrados!</h4>
 	  	</c:if>
 	</div>
 </body>
