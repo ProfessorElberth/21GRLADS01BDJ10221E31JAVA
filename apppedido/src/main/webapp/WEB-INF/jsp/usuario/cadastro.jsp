@@ -11,7 +11,19 @@
 
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-	<div class="container">	
+	<div class="container">
+	
+		<form action="/cep" class="form-inline" method="post">
+			<div class="form-group">
+		      <label>Cep:</label>
+		      <input value="12345678" type="text" class="form-control" placeholder="Entre com o cep" name="cep">
+		    </div>			
+			
+			<button class="btn btn-primary" type="submit">Buscar</button>			
+		</form>
+		
+		<hr>
+		
 		<form action="/usuario/incluir" method="post">	
 			<div class="form-group">
 		      <label>Nome:</label>
@@ -28,6 +40,8 @@
 		      <input type="password" value="elberth.moraes@prof.infnet.edu.br" class="form-control" placeholder="Entre com a senha" name="senha">
 		    </div>
 			
+			<c:import url="/WEB-INF/jsp/endereco.jsp"/>
+		    			
 			<button class="btn btn-primary" type="submit">Cadastrar</button>
 		</form>
 	</div>

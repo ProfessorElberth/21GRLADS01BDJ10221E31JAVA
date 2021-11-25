@@ -5,24 +5,35 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.apppedido.model.domain.Endereco;
 import br.edu.infnet.apppedido.model.domain.Usuario;
-import br.edu.infnet.apppedido.model.repository.UsuarioRepository;
+import br.edu.infnet.apppedido.model.service.UsuarioService;
 
 @Component
 public class DataLoader implements ApplicationRunner {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioService usuarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
+		Endereco endereco = new Endereco();
+		endereco.setBairro("bairro");
+		endereco.setCep("123123123");
+		endereco.setComplemento("complemento");
+		endereco.setLocalidade("localidade");
+		endereco.setLogradouro("logradouro");
+		endereco.setUf("RJ");
+		
 		Usuario usuario = new Usuario();
 		usuario.setEmail("elberth.moraes@prof.infnet.edu.br");
 		usuario.setNome("Elberth Moraes");
 		usuario.setSenha("123");
 		usuario.setAdmin(true);
 		
-		usuarioRepository.save(usuario);
+		usuario.setEndereco(endereco);
+		
+		usuarioService.incluir(usuario);
 	}
 }
