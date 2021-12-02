@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="br.edu.infnet.apppedido.model.domain.Aluno"%>
+<%@page import="br.edu.infnet.apppedido.model.domain.Solicitante"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 			        <th>#</th>
 			        <th>Nome</th>
 			        <th>Email</th>
-			        <th>Alunos</th>
+			        <th>Solicitantes</th>
 			        <c:if test="${user.admin}">
 			        	<th></th>
 			        </c:if>
@@ -41,7 +41,7 @@
 				      	<td>${u.id}</td>
 				        <td>${u.nome}</td>
 				        <td>${u.email}</td>
-				        <td>${u.alunos.size()}</td>
+				        <td>${u.solicitantes.size()}</td>
 				        <c:if test="${user.admin}">
 				        	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
 				        </c:if>

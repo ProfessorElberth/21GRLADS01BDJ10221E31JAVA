@@ -3,6 +3,7 @@ package br.edu.infnet.apppedido.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.apppedido.model.domain.Usuario;
@@ -23,7 +24,7 @@ public class UsuarioService {
 	}
 	
 	public List<Usuario> obterLista(){
-		return (List<Usuario>) usuarioRepository.findAll();
+		return (List<Usuario>) usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "email"));
 	}
 
 	public void excluir(Integer id) {

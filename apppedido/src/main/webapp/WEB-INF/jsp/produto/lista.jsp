@@ -13,19 +13,15 @@
 
 	<div class="container">	
 		
-		<a href="/bebida">Nova bebida</a>
-	
-		<hr>
-		
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> A bebida ${nome} foi cadastrada com sucesso!!!
+				 <strong>Confirmação!</strong> O produto ${nome} foi cadastrada com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaBebidas}">
+		<c:if test="${not empty listaProdutos}">
 		
-			<h4>Listagem de bebidas (${listaBebidas.size()}):</h4>		
+			<h4>Listagem de produtos (${listaProdutos.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
@@ -33,31 +29,25 @@
 			        <th>Nome</th>
 			        <th>Valor</th>
 			        <th>Código</th>
-			        <th>Gelada</th>
-			        <th>Tamanho</th>
-			        <th>Marca</th>
 			        <th></th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="b" items="${listaBebidas}">
+			    	<c:forEach var="p" items="${listaProdutos}">
 				      <tr>
-				      	<td>${b.id}</td>
-				        <td>${b.nome}</td>
-				        <td>${b.valor}</td>
-				        <td>${b.codigo}</td>
-				        <td>${b.gelada}</td>
-				        <td>${b.tamanho}</td>
-				        <td>${b.marca}</td>
-				        <td><a href="/bebida/${b.id}/excluir">Excluir</a></td>
+				      	<td>${p.id}</td>
+				        <td>${p.nome}</td>
+				        <td>${p.valor}</td>
+				        <td>${p.codigo}</td>
+				        <td><a href="/produto/${p.id}/excluir">Excluir</a></td>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaBebidas}">
-	  		<h4>Não existem bebidas cadastradas!</h4>
+	  	<c:if test="${empty listaProdutos}">
+	  		<h4>Não existem produtos cadastrados!</h4>
 	  	</c:if>
 	</div>
 </body>

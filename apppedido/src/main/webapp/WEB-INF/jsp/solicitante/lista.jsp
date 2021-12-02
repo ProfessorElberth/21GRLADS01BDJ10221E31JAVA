@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="br.edu.infnet.apppedido.model.domain.Aluno"%>
+<%@page import="br.edu.infnet.apppedido.model.domain.Solicitante"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,45 +14,47 @@
 
 	<div class="container">	
 		
-		<a href="/aluno">Novo aluno</a>
+		<a href="/solicitante">Novo solicitante</a>
 	
 		<hr>
 		
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> Aluno ${nome} cadastrado com sucesso!!!
+				 <strong>Confirmação!</strong> Solicitante ${nome} cadastrado com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaAlunos}">
+		<c:if test="${not empty listaSolicitantes}">
 		
-			<h4>Listagem de alunos (${listaAlunos.size()}):</h4>		
+			<h4>Listagem de solicitantes (${listaSolicitantes.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
 			        <th>#</th>
 			        <th>Nome</th>
+			        <th>CPF</th>
 			        <th>Email</th>
 			        <th>Usuário</th>
 			        <th></th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="a" items="${listaAlunos}">
+			    	<c:forEach var="s" items="${listaSolicitantes}">
 				      <tr>
-				      	<td>${a.id}</td>
-				        <td>${a.nome}</td>
-				        <td>${a.email}</td>
-				        <td>${a.usuario.nome}</td>
-				        <td><a href="/aluno/${a.id}/excluir">Excluir</a></td>
+				      	<td>${s.id}</td>
+				        <td>${s.nome}</td>
+				        <td>${s.cpf}</td>
+				        <td>${s.email}</td>
+				        <td>${s.usuario.nome}</td>
+				        <td><a href="/solicitante/${s.id}/excluir">Excluir</a></td>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaAlunos}">
-	  		<h4>Não existem alunos cadastrados!</h4>
+	  	<c:if test="${empty listaSolicitantes}">
+	  		<h4>Não existem solicitantes cadastrados!</h4>
 	  	</c:if>
 	</div>
 </body>

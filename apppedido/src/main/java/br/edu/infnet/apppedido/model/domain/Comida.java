@@ -1,12 +1,21 @@
 package br.edu.infnet.apppedido.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.apppedido.model.exceptions.PesoZeradoException;
 
+@Entity
+@Table(name = "TComida")
 public class Comida extends Produto {
 	
 	private float peso;
 	private boolean vegano;
 	private String ingredientes;
+	
+	public Comida() {
+		// 
+	}
 
 	public Comida(String nome, float valor, int codigo) {
 		super(nome, valor, codigo);

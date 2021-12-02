@@ -58,6 +58,6 @@ public class UsuarioController {
 		
 		usuarioService.excluir(id);
 
-		return "redirect:/alunos";
+		return "redirect:/usuarios";
 	}	
 }

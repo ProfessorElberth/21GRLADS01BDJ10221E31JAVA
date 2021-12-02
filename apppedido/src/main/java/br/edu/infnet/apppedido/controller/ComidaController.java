@@ -8,47 +8,47 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.apppedido.model.domain.Aluno;
+import br.edu.infnet.apppedido.model.domain.Comida;
 import br.edu.infnet.apppedido.model.domain.Usuario;
-import br.edu.infnet.apppedido.model.service.AlunoService;
+import br.edu.infnet.apppedido.model.service.ComidaService;
 
 @Controller
-public class AlunoController {
+public class ComidaController {
 	
 	@Autowired
-	private AlunoService alunoService;
+	private ComidaService comidaService;
 
-	@GetMapping(value = "/aluno")
+	@GetMapping(value = "/comida")
 	public String telaCadastro() {
-		return "aluno/cadastro";
+		return "comida/cadastro";
 	}
 	
-	@GetMapping(value = "/alunos")
+	@GetMapping(value = "/comidas")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listaAlunos", alunoService.obterLista(usuario));
+		model.addAttribute("listaComidas", comidaService.obterLista(usuario));
 		
-		return "aluno/lista";
+		return "comida/lista";
 	}
 
-	@PostMapping(value = "/aluno/incluir")
-	public String incluir(Model model, Aluno aluno, @SessionAttribute("user") Usuario usuario) {
+	@PostMapping(value = "/comida/incluir")
+	public String incluir(Model model, Comida comida, @SessionAttribute("user") Usuario usuario) {
 		
-		aluno.setUsuario(usuario);
+		comida.setUsuario(usuario);
 		
-		alunoService.incluir(aluno);
+		comidaService.incluir(comida);
 
-		model.addAttribute("nome", aluno.getNome());
+		model.addAttribute("nome", comida.getNome());
 
 		return telaLista(model, usuario);
 	}
 	
-	@GetMapping(value = "/aluno/{id}/excluir")
+	@GetMapping(value = "/comida/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		alunoService.excluir(id);
+		comidaService.excluir(id);
 
-		return "redirect:/alunos";
+		return "redirect:/comidas";
 	}
 
 }

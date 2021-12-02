@@ -13,19 +13,19 @@
 
 	<div class="container">	
 		
-		<a href="/bebida">Nova bebida</a>
+		<a href="/comida">Nova comida</a>
 	
 		<hr>
 		
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> A bebida ${nome} foi cadastrada com sucesso!!!
+				 <strong>Confirmação!</strong> A comida ${nome} foi cadastrada com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaBebidas}">
+		<c:if test="${not empty listaComidas}">
 		
-			<h4>Listagem de bebidas (${listaBebidas.size()}):</h4>		
+			<h4>Listagem de comidas (${listaComidas.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
@@ -33,31 +33,31 @@
 			        <th>Nome</th>
 			        <th>Valor</th>
 			        <th>Código</th>
-			        <th>Gelada</th>
-			        <th>Tamanho</th>
-			        <th>Marca</th>
+			        <th>Peso</th>
+			        <th>Vegano</th>
+			        <th>Ingredientes</th>
 			        <th></th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="b" items="${listaBebidas}">
+			    	<c:forEach var="c" items="${listaComidas}">
 				      <tr>
-				      	<td>${b.id}</td>
-				        <td>${b.nome}</td>
-				        <td>${b.valor}</td>
-				        <td>${b.codigo}</td>
-				        <td>${b.gelada}</td>
-				        <td>${b.tamanho}</td>
-				        <td>${b.marca}</td>
-				        <td><a href="/bebida/${b.id}/excluir">Excluir</a></td>
+				      	<td>${c.id}</td>
+				        <td>${c.nome}</td>
+				        <td>${c.valor}</td>
+				        <td>${c.codigo}</td>
+				        <td>${c.peso}</td>
+				        <td>${c.vegano}</td>
+				        <td>${c.ingredientes}</td>
+				        <td><a href="/comida/${c.id}/excluir">Excluir</a></td>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaBebidas}">
-	  		<h4>Não existem bebidas cadastradas!</h4>
+	  	<c:if test="${empty listaComidas}">
+	  		<h4>Não existem comidas cadastradas!</h4>
 	  	</c:if>
 	</div>
 </body>
