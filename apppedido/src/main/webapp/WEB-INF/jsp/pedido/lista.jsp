@@ -14,49 +14,47 @@
 
 	<div class="container">	
 		
-		<c:if test="${not empty nome}">
+		<a href="/pedido">Novo pedido</a>
+	
+		<hr>
+		
+		<c:if test="${not empty descricao}">
 			<div class="alert alert-success">
-				 <strong>Confirmação!</strong> Usuário ${nome} cadastrado com sucesso!!!
+				 <strong>Confirmação!</strong> Pedido ${descricao} cadastrado com sucesso!!!
 			</div>
 		</c:if>
 		
-		<c:if test="${not empty listaUsuarios}">
+		<c:if test="${not empty listaPedidos}">
 		
-			<h4>Listagem de usuários (${listaUsuarios.size()}):</h4>		
+			<h4>Listagem de pedidos (${listaPedidos.size()}):</h4>		
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
 			        <th>#</th>
-			        <th>Nome</th>
-			        <th>Email</th>
-			        <th>Solicitantes</th>
+			        <th>Descricao</th>
+			        <th>WEB</th>
+			        <th>Solicitante</th>
 			        <th>Produtos</th>
-			        <th>Pedidos</th>
-			        <c:if test="${user.admin}">
-			        	<th></th>
-			        </c:if>
+			        <th></th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="u" items="${listaUsuarios}">
+			    	<c:forEach var="p" items="${listaPedidos}">
 				      <tr>
-				      	<td>${u.id}</td>
-				        <td>${u.nome}</td>
-				        <td>${u.email}</td>
-				        <td>${u.solicitantes.size()}</td>
-				        <td>${u.produtos.size()}</td>
-				        <td>${u.pedidos.size()}</td>
-				        <c:if test="${user.admin}">
-				        	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-				        </c:if>
+				      	<td>${p.id}</td>
+				        <td>${p.descricao}</td>
+				        <td>${p.web}</td>
+				        <td>${p.solicitante.nome}</td>
+				        <td>${p.produtos.size()}</td>
+				        <td><a href="/pedido/${p.id}/excluir">Excluir</a></td>
 				      </tr>
 			      </c:forEach>
 			    </tbody>
 		  	</table>
 	  	</c:if>
 	  			
-	  	<c:if test="${empty listaUsuarios}">
-	  		<h4>Não existem usuários cadastrados!</h4>
+	  	<c:if test="${empty listaPedidos}">
+	  		<h4>Não existem pedidos cadastrados!</h4>
 	  	</c:if>
 	</div>
 </body>

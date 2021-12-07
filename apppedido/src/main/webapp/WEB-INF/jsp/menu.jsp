@@ -16,7 +16,7 @@
       	<li><a href="/comidas">Comida</a></li>
       	<li><a href="#">Sobremesa</a></li>
       	<li><a href="/produtos">Produtos</a></li>
-      	<li><a href="#">Pedido</a></li>
+      	<li><a href="/pedidos">Pedido</a></li>
       </c:if>
     </ul>
     

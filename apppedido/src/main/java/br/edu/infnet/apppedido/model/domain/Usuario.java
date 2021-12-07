@@ -36,6 +36,10 @@ public class Usuario {
 	@JoinColumn(name = "idUsuario")
 	private List<Produto> produtos;
 
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Pedido> pedidos;
+
 	public Integer getId() {
 		return id;
 	}
@@ -98,5 +102,13 @@ public class Usuario {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 }
