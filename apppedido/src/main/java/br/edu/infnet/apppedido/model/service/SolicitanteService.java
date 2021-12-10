@@ -34,4 +34,8 @@ public class SolicitanteService {
 	public void excluir(Integer id) {
 		solicitanteRepository.deleteById(id);
 	}
+
+	public Integer obterQtde() {
+		return (int) solicitanteRepository.count();
+	}
 }

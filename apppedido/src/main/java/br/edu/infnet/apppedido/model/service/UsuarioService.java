@@ -30,4 +30,8 @@ public class UsuarioService {
 	public void excluir(Integer id) {
 		usuarioRepository.deleteById(id);		
 	}
+
+	public Integer obterQtde() {
+		return (int) usuarioRepository.count();
+	}
 }

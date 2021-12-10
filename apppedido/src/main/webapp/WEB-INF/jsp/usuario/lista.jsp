@@ -47,7 +47,15 @@
 				        <td>${u.produtos.size()}</td>
 				        <td>${u.pedidos.size()}</td>
 				        <c:if test="${user.admin}">
-				        	<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
+				        	<td><a href="/usuario/${u.id}/excluir">
+							<c:choose>
+								<c:when test = "${user.id != u.id}">
+								Excluir
+								</c:when>
+							</c:choose>
+				        	</a>
+				        	</td>
+				        	
 				        </c:if>
 				      </tr>
 			      </c:forEach>

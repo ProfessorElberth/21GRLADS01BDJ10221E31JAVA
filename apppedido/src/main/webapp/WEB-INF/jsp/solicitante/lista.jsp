@@ -18,6 +18,12 @@
 	
 		<hr>
 		
+		<c:if test="${not empty mensagem}">
+			<div class="alert alert-danger">
+				 <strong>Atenção!</strong> ${mensagem}
+			</div>
+		</c:if>
+
 		<c:if test="${not empty nome}">
 			<div class="alert alert-success">
 				 <strong>Confirmação!</strong> Solicitante ${nome} cadastrado com sucesso!!!

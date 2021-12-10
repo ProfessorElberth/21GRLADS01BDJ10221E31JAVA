@@ -9,6 +9,8 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
+	
+	<c:set var="botao" value=""/>
 
 	<div class="container">	
 		<form action="/pedido/incluir" method="post">	
@@ -18,6 +20,7 @@
 		    </div>			
 
 			<div class="form-group">
+			<c:if test="${not empty produtos}">
 		      <label>Produtos:</label>
 		      <c:forEach var="p" items="${produtos}">
 				<div class="form-check-inline">
@@ -25,19 +28,30 @@
 				    <input type="checkbox" name="produtoIds" class="form-check-input" value="${p.id}"> ${p.nome}
 				  </label>
 				</div>
-			  </c:forEach>			
+			  </c:forEach>
+			</c:if>  			
+			<c:if test="${empty produtos}">
+		      <label>Não existem produtos cadastrados!!!</label>	
+		      <c:set var="botao" value="disabled"/>		
+			</c:if>
 			</div>
 			
 			<div class="form-group">
+		    <c:if test="${not empty solicitantes}">
 		      <label>Solicitante:</label>
 				<select class="form-control" name="solicitante.id">
 				  <c:forEach var="s" items="${solicitantes}">
 					<option value="${s.id}">${s.nome}</option>
 				  </c:forEach>
 				</select>
+			</c:if>
+		    <c:if test="${empty solicitantes}">
+		      <label>Não existem solicitantes cadastrados!!!</label>
+		      <c:set var="botao" value="disabled"/>
+		    </c:if>
 			</div>
 
-			<button class="btn btn-primary" type="submit">Cadastrar</button>
+			<button ${botao} class="btn btn-primary" type="submit">Cadastrar</button>
 		</form>
 	</div>
 </body>

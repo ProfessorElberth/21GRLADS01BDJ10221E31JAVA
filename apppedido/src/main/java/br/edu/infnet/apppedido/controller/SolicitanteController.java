@@ -44,11 +44,15 @@ public class SolicitanteController {
 	}
 	
 	@GetMapping(value = "/solicitante/{id}/excluir")
-	public String excluir(@PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
 		
-		solicitanteService.excluir(id);
+		try {
+			solicitanteService.excluir(id);
+		} catch (Exception e) {
+			model.addAttribute("mensagem", "Impossível realizar a exclusão deste solicitante!!!");
+		}
 
-		return "redirect:/solicitantes";
+		return this.telaLista(model, usuario);
 	}
 
 }

@@ -1,14 +1,19 @@
 package br.edu.infnet.apppedido.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.apppedido.model.domain.Pedido;
+import br.edu.infnet.apppedido.model.domain.Produto;
 import br.edu.infnet.apppedido.model.domain.Usuario;
 import br.edu.infnet.apppedido.model.service.PedidoService;
 import br.edu.infnet.apppedido.model.service.ProdutoService;
@@ -43,9 +48,20 @@ public class PedidoController {
 	}
 
 	@PostMapping(value = "/pedido/incluir")
-	public String incluir(Model model, Pedido pedido, @SessionAttribute("user") Usuario usuario) {
+	public String incluir(Model model, Pedido pedido, @RequestParam String[] produtoIds, @SessionAttribute("user") Usuario usuario) {
+		
+		List<Produto> listaProduto = new ArrayList<Produto>();
 		
 		pedido.setUsuario(usuario);
+		
+		for(String idProduto : produtoIds) {
+			
+			Produto produto = produtoService.obterPorId(Integer.valueOf(idProduto));
+			
+			listaProduto.add(produto);
+		}
+		
+		pedido.setProdutos(listaProduto);
 		
 		pedidoService.incluir(pedido);
 
